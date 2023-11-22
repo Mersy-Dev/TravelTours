@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';  
 
 const useFetch = url => {
     const [data, setData] = useState([]);
@@ -9,6 +10,7 @@ const useFetch = url => {
         const fetchData = async () => {
             setLoading(true);
 
+            // const url = 'http://localhost:4000/api/v1/tours/search/getFeaturedTours';
             try {
                 const res = await fetch(url);
 

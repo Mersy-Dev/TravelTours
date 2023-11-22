@@ -8,18 +8,12 @@ import { BASE_URL } from './../../Utilities/conFig';
 
 
 const FeaturedTourList = () => {
-  const { data: featuredTours, loading, error } = useFetch(`${BASE_URL}/tours/search/getFeaturedTours`);
+  const { data: featuredTours } = useFetch(`${BASE_URL}/tours/search/getFeaturedTours`);
   console.log(featuredTours);
-
   return (
     <>
-      {
-        loading && <h4>Loading...</h4>
-      }
-      {
-        error && <h4>{error}</h4>
-      }
-      {!loading && !error && featuredTours?.map(tour => (
+      
+      {featuredTours?.map(tour => (
         <Col lg='3' md='6' sm='6' className='mb-4' key={tour._id}>
           <TourCard tour={tour} />
         </Col>
