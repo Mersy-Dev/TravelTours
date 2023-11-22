@@ -10,9 +10,9 @@ const useFetch = url => {
         const fetchData = async () => {
             setLoading(true);
 
-            // const url = 'http://localhost:4000/api/v1/tours/search/getFeaturedTours';
+            const url = 'http://localhost:4000/api/v1/tours/search/getFeaturedTours';
             try {
-                const res = await fetch(url);
+                const res = await axios.get(url);
 
                 if (!res.ok) {
                     setError('Could not fetch the data for that resource');
