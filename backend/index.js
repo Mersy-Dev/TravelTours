@@ -1,4 +1,4 @@
-import express from "express";
+import  express  from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
@@ -16,25 +16,28 @@ const port = process.env.PORT || 8000;
 const corsOptions = {
     origin: true,
     credentials: true,
-};
-app.use(cors(corsOptions));
+  };
+  app.use(cors(corsOptions));
 
 //database connection
-const connect = async () => {
-    try {
-        await mongoose.connect(process.env.MONGO_URI)
-        console.log('Database connected successfully')
-    } catch (error) {
-        console.log('Error connecting to database', error)
-
+    const connect = async() =>{
+        try {
+            await mongoose.connect(process.env.MONGO_URI, {
+                useNewUrlParser: true,
+                useUnifiedTopology: true,
+            })
+            console.log('Database connected successfully')
+        } catch (error) {
+            console.log('Error connecting to database', error) 
+            
+        }
     }
-}
 
 
 
 //middlesware
 app.use(express.json());
-app.use(cors(corsOptions));
+app.use(cors(corsOptions));    
 app.use(cookieParser())
 
 
