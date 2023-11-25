@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-// import cors from "cors";
+import cors from "cors";
 import cookieParser from "cookie-parser";
 import tourRoute from './routes/tour.js'
 import userRoute from './routes/user.js'
@@ -13,11 +13,11 @@ import bookingRoute from './routes/bookingRoute.js';
 dotenv.config();
 const app = express()
 const port = process.env.PORT || 8000;
-// const corsOptions = {
-//     origin: true,
-//     credentials: true,
-// };
-// app.use(cors(corsOptions));
+const corsOptions = {
+    origin: true,
+    credentials: true,
+};
+app.use(cors(corsOptions));
 
 //database connection
 const connect = async () => {
@@ -34,7 +34,7 @@ const connect = async () => {
 
 //middlesware
 app.use(express.json());
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 app.use(cookieParser())
 
 
